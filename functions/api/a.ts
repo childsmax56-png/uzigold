@@ -9,33 +9,40 @@ function parseSongName(raw: string): { name: string; extra: string | undefined }
 }
 
 const ERA_ORDER = [
-  'Collaboration with 2kthagoon',
-  'Collaboration with SwagHollywood',
-  'Super Sonic',
-  'Deep Blue $trips',
-  'Wake Up Call',
-  'Elegance',
-  'Different Creature',
-  "I'm So Me",
-  'We Us',
-  'DC2',
-  'Hold Ön',
-  'Alivë',
-  'Up 2 Më [V1]',
-  'Trëndi',
-  'Up 2 Më [V3]',
-  'Super geëky',
-  'Lyfë',
-  'AftërLyfe',
-  'AftërLyfe (Deluxe)',
-  'Lyfëstyle [V1]',
-  'LYFESTYLE [V2]',
-  'LYFESTYLE DIGITAL DELUXE',
-  'A DANGEROUS LYFE [V1]',
-  'ADL [V2]',
-  'DANGEROUS SUMMER',
-  'ADL [V3]',
-  'Ongoing',
+  'Purple Thoughtz',
+  'Home Economic$',
+  'The Real Uzi',
+  'Luv Is Rage',
+  'Lil Uzi Vert vs. The World',
+  'The Perfect LUV Tape',
+  'Luv Is Rage 2 [V1]',
+  '1017 vs. The World',
+  'Luv Is Rage 1.5',
+  '2 Luv Is 2 Rage',
+  'Luv Is Rage 2 [V2]',
+  'Too Fast',
+  'Lil Uzi Vert vs. The World 2 [V1]',
+  '16*29',
+  'Tsunami Island',
+  'Eternal Atake [V1]',
+  'Eternal Atake [V2]',
+  'Eternal Atake [V3]',
+  'Baby Pluto Era',
+  'Pluto x Baby Pluto',
+  'Forever Young',
+  'Pink Tape [V1]',
+  'Super geeky',
+  'Pink Tape [V2]',
+  'RED & WHITE',
+  'METROOOO PINK',
+  'Pink Tape [V3]',
+  'DPONTHEBEAT Vol 5',
+  'Barter 16',
+  'Luv Is Rage 3 [V2]',
+  'Eternal Atake 2',
+  'ALL WHITE',
+  'W.H.2.U',
+  'LP 5',
 ];
 
 export const onRequestGet: PagesFunction = async (context) => {
@@ -49,7 +56,7 @@ export const onRequestGet: PagesFunction = async (context) => {
     const text = await res.text();
     const rows = parseCSV(text);
 
-    const NAME_KEY = 'Name\n(Join The Discord!)';
+    const NAME_KEY = 'Name';
     const eras: Record<string, any> = {};
 
     const validEraNames = new Set<string>();
@@ -91,7 +98,7 @@ export const onRequestGet: PagesFunction = async (context) => {
           track_length: row['Track Length'] ?? '',
           file_date: row['File Date'] ?? '',
           leak_date: row['Leak Date'] ?? '',
-          available_length: row['Available Length'] ?? '',
+          available_length: row['Availability'] ?? row['Available Length'] ?? '',
           quality: row['Quality'] ?? '',
           url: links[0] ?? '',
           urls: links,
@@ -108,7 +115,7 @@ export const onRequestGet: PagesFunction = async (context) => {
     }
 
     const trackerData = {
-      name: 'TWIZZYgold',
+      name: 'UZIGOLD',
       tabs: ['eras'],
       current_tab: 'eras',
       eras: orderedEras,
